@@ -1,0 +1,36 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+ 
+		<link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-theme.min.css" %}">
+		<link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">
+</head>
+</head>
+<body>
+	{% block content %}
+	<div class="col-sm-6 col-sm-offset-3">
+	<h1>Create Posts</h1>
+	<form method="POST" action="" enctype="multipart/form-data">
+	{% csrf_token %}
+	{% for hidden in postForm.hidden_fields %}
+		{{ hidden }}
+	{% endfor %}
+
+	{% for field in postForm %}
+		{{ field }}<br/>
+	{% endfor %}
+
+	{{ formset.management_form }}
+	{% for form in formset %}
+		{{ form }}
+	{% endfor %}
+	{{ form.as_p }}
+	<input type="submit" value="Create Post" />
+	</form>
+	</div>
+{% endblock %}
+</body>
+</html>

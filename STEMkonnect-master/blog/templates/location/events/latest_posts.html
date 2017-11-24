@@ -1,0 +1,9 @@
+<ul>
+{% for event in latest_events %}
+    <li><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></li>
+    <li><img src="{% if event.image %}{{ event.image.url }}{% endif %}" height="100px" width="160px"></li>
+    			
+    	
+{% endfor %}
+</ul>
+
